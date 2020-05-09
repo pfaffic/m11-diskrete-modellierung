@@ -14,20 +14,31 @@
 ## along with this program.  If not, see
 ## <https://www.gnu.org/licenses/>.
 
+## -*- texinfo -*- 
+## @deftypefn {} {@var{retval} =} getInfectedVector (@var{input1}, @var{input2})
+##
+## @seealso{}
+## @end deftypefn
 
 ## Author: Christoph Pfaffmann <christoph@Christophs-MBP.fritz.box>
 ## Created: 2020-05-02
 
-numberOfCitizens=60;
-timespan=25; ## timespan in days
-basicReproductionNumber=1;
-delayTIme=5;
-infectedVector=getInfectedVector(numberOfCitizens,timespan,basicReproductionNumber)
-accInfVec = getAccumulatedInfectedVector(infectedVector)
-recoveredVector=getRecoveredVector(accInfVec,delayTIme)
-susceptibleVector=getSusceptibleVector(numberOfCitizens, accInfVec , recoveredVector)
-hold on
-plot(infectedVector)
-plot(recoveredVector)
-plot(susceptibleVector)
-hold off
+function infected = getInfectedVector (n, t,b)
+  ## n = Anzahl der Bürger
+  ## t = Zeitraum in Tagen
+  ## b = Basisreproduktionszahl
+  infected = getInfectedVector2(n,t,b);
+endfunction
+
+function infected = getInfectedVector2(n,t,b)
+  timespan1 = floor(t/2);
+  timespan2 = t - timespan1;
+  infected = zeros(1, t)
+  
+  for i=1:timespan1  
+    infected(i+1)=infected(i)+1
+  endfor
+  for j=timespan1+1:t
+    infected(j+1)=infected(j)-1
+  endfor
+endfunction

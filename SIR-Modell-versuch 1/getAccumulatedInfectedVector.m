@@ -15,7 +15,7 @@
 ## <https://www.gnu.org/licenses/>.
 
 ## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} getInfectedVector (@var{input1}, @var{input2})
+## @deftypefn {} {@var{retval} =} getAccumulatedInfectedVector (@var{input1}, @var{input2})
 ##
 ## @seealso{}
 ## @end deftypefn
@@ -23,9 +23,10 @@
 ## Author: Christoph Pfaffmann <christoph@Christophs-MBP.fritz.box>
 ## Created: 2020-05-02
 
-function infected = getInfectedVector (n, t,b)
-  ## n = Anzahl der Bürger
-  ## t = Zeitraum in Tagen
-  ## b = Basisreproduktionszahl
-  infected = ones(1,t);
+function accumulatedInfected = getAccumulatedInfectedVector (infectedVector)
+  lengthInfectedVector= length(infectedVector);
+  accumulatedInfected=zeros(1,lengthInfectedVector);
+  for i=1:lengthInfectedVector
+    accumulatedInfected(i) = length(infectedVector(1:i));
+  endfor
 endfunction

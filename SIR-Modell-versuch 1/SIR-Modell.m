@@ -14,23 +14,20 @@
 ## along with this program.  If not, see
 ## <https://www.gnu.org/licenses/>.
 
-## -*- texinfo -*- 
-## @deftypefn {} {@var{retval} =} getAccumulatedInfectedVector (@var{input1}, @var{input2})
-##
-## @seealso{}
-## @end deftypefn
 
 ## Author: Christoph Pfaffmann <christoph@Christophs-MBP.fritz.box>
 ## Created: 2020-05-02
-
-function accumulatedInfected = getAccumulatedInfectedVector (infectedVector)
-  lengthInfectedVector= length(infectedVector);
-  accumulatedInfected=zeros(1,lengthInfectedVector);
-  for i=1:lengthInfectedVector
-      if  i<=1
-        accumulatedInfected(i)=infectedVector(i);
-      else
-        accumulatedInfected(i)=infectedVector(i)+accumulatedInfected(i-1);
-       end 
-  endfor
-endfunction
+clear all;
+numberOfCitizens=60;
+timespan=30; ## timespan in days
+basicReproductionNumber=1;
+delayTIme=5;
+infectedVector=getInfectedVector(numberOfCitizens,timespan,basicReproductionNumber);
+accInfVec = getAccumulatedInfectedVector(infectedVector);
+recoveredVector=getRecoveredVector(accInfVec,delayTIme);
+susceptibleVector=getSusceptibleVector(numberOfCitizens, accInfVec , recoveredVector);
+hold on
+plot(infectedVector)
+plot(recoveredVector)
+plot(susceptibleVector)
+hold off
