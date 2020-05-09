@@ -1,17 +1,17 @@
 close all 
 clear all
 
-Anzahl_Gebiete = 50;
+Anzahl_Gebiete = 2;
 dt=14; %Zeitspanne
 t_unit ="d";
 t=100; %Iterationsschritte
 
-Startbedingungen=zeros(Anzahl_Gebiete,7)
+Startbedingungen=zeros(Anzahl_Gebiete,7);
 
 %Initialisierung der S,I,R Matrizen
-S=zeros(Anzahl_Gebiete,t)
-I=zeros(Anzahl_Gebiete,t)
-R=zeros(Anzahl_Gebiete,t)
+S=zeros(Anzahl_Gebiete,t);
+I=zeros(Anzahl_Gebiete,t);
+R=zeros(Anzahl_Gebiete,t);
 
 for i=1:Anzahl_Gebiete
 
@@ -31,8 +31,10 @@ for i=1:Anzahl_Gebiete
   Startbedingungen(i,7)=t; %Iterationsschritte
 endfor
 
-Gebiete=Startbedingungen(1:Anzahl_Gebiete,1:3)
-GebieteT=Gebiete';
+Gebiete=Startbedingungen(1:Anzahl_Gebiete,1:3);
+S_Gebiete = Gebiete(1:Anzahl_Gebiete,1);
+I_Gebiete = Gebiete(1:Anzahl_Gebiete,2);
+R_Gebiete = Gebiete(1:Anzahl_Gebiete,3);
 
 for i=1:Anzahl_Gebiete
   [S(i,:),I(i,:),R(i,:)]=SIR_Modell(i, Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7));

@@ -2,7 +2,7 @@ close all
 clear all
 
 Anzahl_Gebiete = 3;
-Startbedingungen=zeros(Anzahl_Gebiete,7)
+Startbedingungen=zeros(Anzahl_Gebiete,7);
 
 %Startbedingungen für Gebiet 1
 n=80000000; %Bevölkerungsanzahl
@@ -58,12 +58,12 @@ Startbedingungen(3,6)=t_unit;
 Startbedingungen(3,7)=t; %Iterationsschritte
 
 %Initialisierung der S,I,R Matrizen
-S=zeros(Anzahl_Gebiete,t)
-I=zeros(Anzahl_Gebiete,t)
-R=zeros(Anzahl_Gebiete,t)
+S=zeros(Anzahl_Gebiete,t);
+I=zeros(Anzahl_Gebiete,t);
+R=zeros(Anzahl_Gebiete,t);
 
 for i=1:Anzahl_Gebiete
-  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(i,Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7))
+  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(i,Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7));
 endfor
 
 
