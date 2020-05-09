@@ -1,7 +1,7 @@
 close all 
 clear all
 
-Anzahl_Gebiete = 3;
+Anzahl_Gebiete = 50;
 dt=14; %Zeitspanne
 t_unit ="d";
 t=100; %Iterationsschritte
@@ -16,9 +16,9 @@ R=zeros(Anzahl_Gebiete,t)
 for i=1:Anzahl_Gebiete
 
   %Startbedingungen für Gebiet 1
-  n=floor(minMaxRand(1000000,80000000)); %Bevölkerungsanzahl
-  I_Startwert=floor(minMaxRand(1,2)); %gibt an wie viel zu Beginn infected sind
-  R_Startwert=floor(minMaxRand(0,I_Startwert)); %gibt an wie viel zu Beginn recovered sind
+  n=round(minMaxRand(1000000,80000000)); %Bevölkerungsanzahl
+  I_Startwert=round(minMaxRand(1,2)); %gibt an wie viel zu Beginn infected sind
+  R_Startwert=round(minMaxRand(0,I_Startwert)); %gibt an wie viel zu Beginn recovered sind
   BRZ=minMaxRand(1.1,2); %Basisreproduktionszahl
 
   
@@ -29,10 +29,13 @@ for i=1:Anzahl_Gebiete
   Startbedingungen(i,5)=dt; %Zeitspanne
   Startbedingungen(i,6)=t_unit;
   Startbedingungen(i,7)=t; %Iterationsschritte
+endfor
 
+Gebiete=Startbedingungen(1:Anzahl_Gebiete,1:3)
+GebieteT=Gebiete';
 
-
-  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7))
+for i=1:Anzahl_Gebiete
+  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(i, Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7));
 
 endfor
 

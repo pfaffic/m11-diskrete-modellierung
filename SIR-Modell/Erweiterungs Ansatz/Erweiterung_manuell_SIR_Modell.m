@@ -63,7 +63,7 @@ I=zeros(Anzahl_Gebiete,t)
 R=zeros(Anzahl_Gebiete,t)
 
 for i=1:Anzahl_Gebiete
-  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7))
+  [S(i,:),I(i,:),R(i,:)]=SIR_Modell(i,Startbedingungen(i,1), Startbedingungen(i,2), Startbedingungen(i,3), Startbedingungen(i,4), Startbedingungen(i,5), Startbedingungen(i,6), Startbedingungen(i,7))
 endfor
 
 

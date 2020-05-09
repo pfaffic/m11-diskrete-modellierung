@@ -1,5 +1,6 @@
-function [S,I,R]=SIR_Modell(n, I_Startwert, R_Startwert, BRZ, dt, t_unit, t)
+function [S,I,R]=SIR_Modell(iteration, n, I_Startwert, R_Startwert, BRZ, dt, t_unit, t)
 
+%iteration :Funktion wurde aufgerufen im i-ten Schritt
 %n=80000000; %Bevölkerungsanzahl
 %I_Startwert=1; %gibt an wie viel zu Beginn infected sind
 %R_Startwert=0; %gibt an wie viel zu Beginn recovered sind
@@ -31,15 +32,21 @@ for i=1:t
    endif 
 endfor
 
-%Plotten der funktionen
-hold on
+shouldBePlotted=false;
+
+if(shouldBePlotted)
+  %Plotten der funktionen
+  figure(iteration)
+  hold on
+
   plot(S,"b") %b macht Graph blau
   plot(I,"r") %r -> rot
   plot(R,"y") %y -> gelb
 
 
-legend('Susceptibles', 'Infected','Recovered')%Beschriftung der Funktionen
-ylabel('Anzahl Personen') %Beschriftung y-Achse
-xlabel(['Zeit in ' num2str(dt) ' ' t_unit])  %
-hold off
+  legend('Susceptibles', 'Infected','Recovered')%Beschriftung der Funktionen
+  ylabel('Anzahl Personen') %Beschriftung y-Achse
+  xlabel(['Zeit in ' num2str(dt) ' ' t_unit])  %
+  hold off
+endif
 endfunction
