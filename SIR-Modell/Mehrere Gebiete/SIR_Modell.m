@@ -1,6 +1,6 @@
 clear all
 close all
-n=80000000; %Bevölkerungsanzahl
+n=[80000000, 10000]; %Bevölkerungsanzahl
 I_Startwert=1; %gibt an wie viel zu Beginn infected sind
 R_Startwert=0; %gibt an wie viel zu Beginn recovered sind
 BRZ=2; %Basisreproduktionszahl
@@ -8,12 +8,14 @@ dt=14; %Zeitspanne
 t_unit ="Tage";
 t=50; %Iterationsschritte
 
+
+
 T=t*dt; %Beobachtungszeitraum (Iterationsschritte mal Zeitspanne)
 
 %Anfangsvektoren erstellen
-S=zeros(1, t); % Zeilenvektor  der Susceptibles mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
-I=zeros(1,t); %  Zeilenvektor der Infected mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
-R=zeros(1,t); % Zeilenvektor  der Recovered mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
+  S=zeros(1, t); % Zeilenvektor  der Susceptibles mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
+  I=zeros(1,t); %  Zeilenvektor der Infected mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
+  R=zeros(1,t); % Zeilenvektor  der Recovered mit einer Zeile und die Anzahl der Iterationsschritte als Spalten
 
 %Startbedingungen festlegen
 

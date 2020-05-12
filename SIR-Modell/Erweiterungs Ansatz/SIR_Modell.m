@@ -32,7 +32,7 @@ for i=1:t
    endif 
 endfor
 
-shouldBePlotted=false;
+shouldBePlotted=true;
 
 if(shouldBePlotted)
   %Plotten der funktionen
