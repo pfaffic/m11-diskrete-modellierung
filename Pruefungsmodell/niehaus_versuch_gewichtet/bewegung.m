@@ -10,7 +10,7 @@ function erg = bewegung(G)
   [x,y]=meshgrid(1:X,1:Y);
   for j=1:Y
     for i=1:X
-      abstand((i-1)*Y+1:i*Y,(j-1)*X+1:j*X)=getDistance(G,j,i);
+      abstand((i-1)*Y+1:i*Y,(j-1)*X+1:j*X)=distance(G,j,i);
         if (abstand((i-1)*Y+1:i*Y,(j-1)*X+1:j*X) < 0)
           error("getDistance: error while calculating")
         endif

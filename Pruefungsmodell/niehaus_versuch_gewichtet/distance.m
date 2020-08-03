@@ -23,7 +23,7 @@
 ## Author: chris <chris@SURFACE>
 ## Created: 2020-08-02
 
-function dist = getDistance (G,y_Coord,x_Coord)
+function dist = distance (G,y_Coord,x_Coord)
   dist=-1; %default Value falls Fehler auftritt
   if (nargin != 3)
     error("getDistance (Matrix, Y-Koordinate, X-Koordinate)");
