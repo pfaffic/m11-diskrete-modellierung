@@ -1,9 +1,9 @@
 close all;
 clear;
 
-GitterBreite = 8;
-GitterHoehe = 8;
-Koordinaten_Startgebiet = [5 7];
+GitterBreite = 24;
+GitterHoehe = 24;
+Koordinaten_Startgebiet = [3 3];
 
 M=GitterHoehe+1;
 N=GitterBreite+1;
@@ -47,19 +47,20 @@ for  t=1:Tage
 
   if(true)
     figure(t)
-    surface(I_Gebiet);
+    surfc(I_Gebiet);
     title(["Infizierte am Tag: " num2str(t)])
     xlabel("x-Achse")
     ylabel("y-Achse")
     zlabel("Anzahl Personen")
+    axis([1 N 1 M 0 0.45])
     colormap('jet');
     colorbar
-    saveas((t),["Infizierte/GLP_Infizierte_Tag_" num2str(t-1) ".jpg"])
+    saveas((t),["Infizierte/GLP_Infizierte_Tag_" num2str(t) ".jpg"])
   endif
 endfor
 
 %Plotten der Funktionen für jedes Gebiet 
-if(true)
+if(false)
 for g=1:AnzahlGebiete
 figure(Tage+g)
   hold on
