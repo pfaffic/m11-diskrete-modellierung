@@ -38,6 +38,7 @@ if (ismatrix(G))
       dist(j,i)=sqrt((x_Coord-i)^2+(y_Coord-j)^2);
     endfor
   endfor
+  %dist
   w=1./(1+dist);
   ws=sum(w);
   dist=w./ws;
