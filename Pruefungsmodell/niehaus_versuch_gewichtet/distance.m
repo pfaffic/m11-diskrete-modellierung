@@ -40,7 +40,7 @@ if (ismatrix(G))
   endfor
   %dist
   w=1./(1+dist);
-  ws=sum(w);
+  ws=sum(w(:));
   dist=w./ws;
   else
     error("getDistance: Coordinates must be smaller than the size of the matrix")

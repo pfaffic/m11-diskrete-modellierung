@@ -29,6 +29,6 @@ for t=1:T
   colorbar
   saveas((t),["GLP_Bewegung_Tag_" num2str(t-1) ".jpg"])
   G=G_neu;
-endfor
   sum(sum(G_neu))
   max(max(G_neu))
+endfor
